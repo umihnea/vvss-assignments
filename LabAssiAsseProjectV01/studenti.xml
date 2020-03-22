@@ -12,4 +12,16 @@
         <Nume>Ion</Nume>
         <Grupa>227</Grupa>
     </student>
+    <student ID="id0">
+        <Nume>s0</Nume>
+        <Grupa>111</Grupa>
+    </student>
+    <student ID="id1">
+        <Nume>s1</Nume>
+        <Grupa>937</Grupa>
+    </student>
+    <student ID="non-unique">
+        <Nume>st0</Nume>
+        <Grupa>937</Grupa>
+    </student>
 </Entitati>

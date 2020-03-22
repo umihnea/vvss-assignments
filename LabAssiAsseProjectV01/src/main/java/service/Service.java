@@ -31,6 +31,7 @@ public class Service {
         if (result == null) {
             return 1;
         }
+
         return 0;
     }
 
