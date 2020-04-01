@@ -53,18 +53,24 @@ public class WhiteBoxTest {
     public void testIdConditional() {
         String[] trueArgs = {"valid-id", "desc", "14", "1"};
         String[] falseArgs = {null, "desc", "14", "1"};
+        String[] falseArgs1 = {"", "desc", "14", "1"};
 
         Assert.assertEquals(0, addAssignment(trueArgs));
-        Assert.assertEquals(-1, addAssignment(falseArgs));
+        Arrays.asList(falseArgs, falseArgs1).forEach(args -> {
+            Assert.assertEquals(-1, addAssignment(falseArgs));
+        });
     }
 
     @Test
     public void testDescriptionConditional() {
         String[] trueArgs = {"valid-id", "desc", "14", "1"};
         String[] falseArgs = {"valid-id", null, "14", "1"};
+        String[] falseArgs1 = {"valid-id", "", "14", "1"};
 
         Assert.assertEquals(0, addAssignment(trueArgs));
-        Assert.assertEquals(-1, addAssignment(falseArgs));
+        Arrays.asList(falseArgs, falseArgs1).forEach(args -> {
+            Assert.assertEquals(-1, addAssignment(falseArgs));
+        });
     }
 
     @Test
@@ -88,8 +94,9 @@ public class WhiteBoxTest {
 
         String[] falseArgs = {"id", "desc", "14", "-1"};
         String[] falseArgs1 = {"id", "desc", "14", "15"};
+        String[] falseArgs2 = {"id", "desc", "1", "14"};
 
-        Arrays.asList(falseArgs, falseArgs1).forEach(args -> {
+        Arrays.asList(falseArgs, falseArgs1, falseArgs2).forEach(args -> {
             Assert.assertEquals(-1, addAssignment(args));
         });
     }
