@@ -40,8 +40,9 @@ public class Service {
         Tema result = temaXmlRepo.save(tema);
 
         if (result == null) {
-            return 1;
+            return -1;
         }
+
         return 0;
     }
 
