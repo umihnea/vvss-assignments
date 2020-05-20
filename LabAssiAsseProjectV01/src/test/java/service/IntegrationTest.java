@@ -91,4 +91,42 @@ public class IntegrationTest {
         testGrade();
     }
 
+    @Test
+    public void testAddStudent(){
+        Assert.assertEquals(
+                0,
+                service.saveStudent("id0", "name1", 935)
+        );
+        Assert.assertEquals(
+                1,
+                service.saveStudent(null, "name2", 935)
+        );
+    }
+
+    @Test
+    public void testAddAssignment(){
+        testAddStudent();
+        String[] trueArgs = {"valid-id", "desc", "14", "1"};
+        String[] falseArgs = {null, "desc", "14", "1"};
+        String[] falseArgs1 = {"", "desc", "14", "1"};
+
+        Assert.assertEquals(0, addAssignment(trueArgs));
+        Arrays.asList(falseArgs, falseArgs1).forEach(args -> {
+            Assert.assertEquals(-1, addAssignment(falseArgs));
+        });
+    }
+
+    @Test
+    public void testAddGrade(){
+        testAddAssignment();
+        Assert.assertEquals(
+                0,
+                service.saveNota("1", "1", 8, 10, "Good")
+        );
+        Assert.assertEquals(
+                -1,
+                service.saveNota("-1", "1", 10, 10, "Good")
+        );
+    }
+
 }
